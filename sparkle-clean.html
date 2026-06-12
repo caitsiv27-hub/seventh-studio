@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sparkle Clean Co. — Home Cleaning Services</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sky:    #4A9ECC;
+      --sky-dk: #357FAA;
+      --sky-lt: #EBF5FB;
+      --white:  #FFFFFF;
+      --grey:   #F4F7F9;
+      --ink:    #1A2B38;
+      --mid:    #6B8699;
+      --border: #D6E8F2;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--white);
+      color: var(--ink);
+      font-family: 'Barlow', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── DEMO BANNER ── */
+    .demo-banner {
+      background: var(--ink);
+      color: rgba(255,255,255,0.85);
+      text-align: center;
+      padding: 0.55rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+    }
+    .demo-banner a {
+      color: #7EC8E3;
+      text-decoration: none;
+      font-weight: 600;
+      margin-left: 0.4rem;
+    }
+    .demo-banner a:hover { text-decoration: underline; }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .nav-inner {
+      max-width: 1080px; margin: 0 auto; padding: 0 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+      height: 64px;
+    }
+    .nav-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.3rem; font-weight: 900;
+      color: var(--ink); text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-logo span { color: var(--sky); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.88rem; font-weight: 400;
+      color: var(--mid); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta {
+      background: var(--sky); color: var(--white);
+      font-size: 0.85rem; font-weight: 600;
+      padding: 0.5rem 1.3rem; border-radius: 4px;
+      text-decoration: none; transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .nav-cta:hover { background: var(--sky-dk); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+      min-height: 92vh;
+      display: flex; align-items: center;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1600&auto=format&fit=crop&q=80');
+      background-size: cover;
+      background-position: center 30%;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        105deg,
+        rgba(20, 45, 65, 0.88) 0%,
+        rgba(20, 45, 65, 0.75) 45%,
+        rgba(20, 45, 65, 0.25) 100%
+      );
+    }
+    .hero-inner {
+      max-width: 1080px; margin: 0 auto; padding: 6rem 2rem;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 3rem; align-items: center;
+      position: relative; z-index: 2;
+      width: 100%;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(74,158,204,0.25);
+      border: 1px solid rgba(74,158,204,0.5);
+      padding: 0.3rem 0.8rem; border-radius: 20px;
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: #B8E0F5; margin-bottom: 1.2rem;
+    }
+    .hero-eyebrow::before { content: '✦'; font-size: 0.6rem; }
+
+    .hero-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(3rem, 6vw, 5rem);
+      font-weight: 900; line-height: 0.95;
+      text-transform: uppercase; letter-spacing: -0.01em;
+      color: #FFFFFF; margin-bottom: 1.2rem;
+    }
+    .hero-title .sky { color: #7EC8E3; }
+
+    .hero-sub {
+      font-size: 1.05rem; font-weight: 300;
+      color: rgba(255,255,255,0.75); line-height: 1.75;
+      margin-bottom: 2rem; max-width: 420px;
+    }
+    .hero-sub strong { color: #fff; font-weight: 500; }
+
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--sky); color: var(--white);
+      font-size: 0.92rem; font-weight: 600;
+      padding: 0.8rem 1.6rem; border-radius: 4px;
+      text-decoration: none; transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: var(--sky-dk); transform: translateY(-1px); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--white); color: var(--ink);
+      font-size: 0.92rem; font-weight: 500;
+      padding: 0.8rem 1.6rem; border-radius: 4px;
+      text-decoration: none; border: 1.5px solid var(--border);
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .btn-secondary:hover { border-color: var(--sky); transform: translateY(-1px); }
+
+    .hero-trust {
+      display: flex; gap: 1.5rem; margin-top: 2rem; flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 0.4rem;
+      font-size: 0.8rem; font-weight: 400; color: rgba(255,255,255,0.7);
+    }
+    .trust-item::before { content: '✓'; color: #7EC8E3; font-weight: 700; }
+
+    /* Hero visual */
+    .hero-visual {
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+    .hero-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.4rem 1.6rem;
+      box-shadow: 0 4px 20px rgba(74,158,204,0.08);
+    }
+    .hero-card-top {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+    .hero-card-icon {
+      width: 44px; height: 44px; background: var(--sky-lt);
+      border-radius: 10px; display: flex; align-items: center;
+      justify-content: center; font-size: 1.3rem;
+    }
+    .hero-card-badge {
+      background: #E8F5E9; color: #2E7D32;
+      font-size: 0.68rem; font-weight: 600;
+      padding: 0.2rem 0.6rem; border-radius: 20px;
+      letter-spacing: 0.06em;
+    }
+    .hero-card h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--ink); margin-bottom: 0.3rem;
+    }
+    .hero-card p { font-size: 0.82rem; color: var(--mid); line-height: 1.6; }
+    .hero-card-sm {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    }
+    .hero-card {
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 12px; padding: 1.4rem 1.6rem;
+    }
+    .hero-card-mini {
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 10px; padding: 1.2rem 1rem;
+      text-align: center;
+    }
+    .hero-card-mini .mini-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2rem; font-weight: 900;
+      color: #7EC8E3; line-height: 1;
+    }
+    .hero-card-mini .mini-lbl {
+      font-size: 0.72rem; color: rgba(255,255,255,0.65); margin-top: 0.2rem;
+    }
+
+    /* ── SHARED SECTION ── */
+    .section { padding: 5rem 0; }
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 2rem; }
+    .section-label {
+      font-size: 0.7rem; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--sky); margin-bottom: 0.6rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .section-label::before { content: ''; width: 20px; height: 2px; background: var(--sky); display: block; }
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900; text-transform: uppercase;
+      line-height: 1; color: var(--ink);
+      margin-bottom: 0.8rem; letter-spacing: -0.01em;
+    }
+    .section-title .sky { color: var(--sky); }
+    .section-sub {
+      font-size: 1rem; font-weight: 300; color: var(--mid);
+      line-height: 1.75; max-width: 520px;
+    }
+
+    /* ── SERVICES ── */
+    #services { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .services-head {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 3rem; align-items: end; margin-bottom: 3.5rem;
+    }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    }
+    .service-card {
+      background: var(--grey);
+      border: 1px solid var(--border);
+      border-radius: 10px; padding: 1.8rem 1.6rem;
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+    .service-card:hover {
+      box-shadow: 0 8px 28px rgba(74,158,204,0.12);
+      transform: translateY(-3px);
+    }
+    .service-icon {
+      font-size: 1.8rem; margin-bottom: 1rem;
+      width: 52px; height: 52px;
+      background: var(--sky-lt); border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .service-card h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.2rem; font-weight: 700;
+      text-transform: uppercase; color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+    .service-card p { font-size: 0.88rem; font-weight: 300; color: var(--mid); line-height: 1.7; }
+    .service-card .service-tag {
+      margin-top: 1rem;
+      font-size: 0.68rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--sky);
+    }
+
+    /* ── WHY US ── */
+    #why { background: var(--sky-lt); border-bottom: 1px solid var(--border); }
+    .why-layout {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center;
+    }
+    .why-points { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem; }
+    .why-point {
+      display: flex; gap: 1.2rem; align-items: flex-start;
+      padding: 1.2rem 1.4rem;
+      background: var(--white); border-radius: 10px;
+      border: 1px solid var(--border);
+      transition: box-shadow 0.2s;
+    }
+    .why-point:hover { box-shadow: 0 4px 16px rgba(74,158,204,0.1); }
+    .why-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2rem; font-weight: 900;
+      color: var(--sky); line-height: 1; flex-shrink: 0;
+      width: 40px; text-align: center;
+    }
+    .why-point-text h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.05rem; font-weight: 700;
+      text-transform: uppercase; color: var(--ink);
+      margin-bottom: 0.25rem;
+    }
+    .why-point-text p { font-size: 0.88rem; font-weight: 300; color: var(--mid); line-height: 1.65; }
+
+    /* Why visual */
+    .why-visual {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px; padding: 2rem;
+      box-shadow: 0 8px 32px rgba(74,158,204,0.1);
+    }
+    .why-visual-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem; font-weight: 700;
+      text-transform: uppercase; color: var(--ink);
+      margin-bottom: 1.5rem; letter-spacing: 0.04em;
+    }
+    .checklist { display: flex; flex-direction: column; gap: 0.75rem; }
+    .check-item {
+      display: flex; align-items: center; gap: 0.75rem;
+      padding: 0.6rem 0.8rem; border-radius: 6px;
+      background: var(--grey);
+    }
+    .check-icon {
+      width: 22px; height: 22px; background: var(--sky);
+      border-radius: 50%; display: flex; align-items: center;
+      justify-content: center; font-size: 0.65rem; color: white;
+      flex-shrink: 0; font-weight: 700;
+    }
+    .check-item span { font-size: 0.88rem; font-weight: 400; color: var(--ink); }
+    .why-visual-footer {
+      margin-top: 1.5rem; padding-top: 1.2rem;
+      border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .why-visual-footer p { font-size: 0.8rem; color: var(--mid); }
+    .why-rating { display: flex; gap: 0.2rem; color: #F4C430; font-size: 0.9rem; }
+
+    /* ── TESTIMONIALS ── */
+    #testimonials { background: var(--white); border-bottom: 1px solid var(--border); }
+    .testi-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .testi-card {
+      background: var(--grey); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.8rem 1.6rem;
+      position: relative;
+    }
+    .testi-quote {
+      font-size: 2.5rem; line-height: 1;
+      color: var(--sky); opacity: 0.3;
+      font-family: Georgia, serif;
+      margin-bottom: 0.5rem;
+    }
+    .testi-card p {
+      font-size: 0.92rem; font-weight: 300;
+      color: var(--ink); line-height: 1.75;
+      margin-bottom: 1.2rem; font-style: italic;
+    }
+    .testi-author {
+      display: flex; align-items: center; gap: 0.8rem;
+      border-top: 1px solid var(--border); padding-top: 1rem;
+    }
+    .testi-avatar {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: var(--sky); display: flex;
+      align-items: center; justify-content: center;
+      font-size: 0.85rem; font-weight: 700; color: white;
+      flex-shrink: 0;
+    }
+    .testi-name { font-size: 0.85rem; font-weight: 600; color: var(--ink); }
+    .testi-loc { font-size: 0.75rem; color: var(--mid); }
+    .testi-stars { display: flex; gap: 0.15rem; color: #F4C430; font-size: 0.75rem; margin-top: 0.2rem; }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--ink); color: white; }
+    .contact-layout {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center;
+    }
+    .contact-left .section-label { color: #7EC8E3; }
+    .contact-left .section-label::before { background: #7EC8E3; }
+    .contact-left .section-title { color: white; }
+    .contact-left .section-title .sky { color: #7EC8E3; }
+    .contact-left .section-sub { color: rgba(255,255,255,0.55); max-width: 100%; }
+    .contact-details { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+    .contact-item {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1rem 1.2rem;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px; text-decoration: none;
+      transition: background 0.2s;
+    }
+    .contact-item:hover { background: rgba(255,255,255,0.1); }
+    .contact-item-icon {
+      width: 40px; height: 40px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    .ci-wa { background: #25D366; }
+    .ci-phone { background: var(--sky); }
+    .ci-email { background: #EA4335; }
+    .ci-area { background: rgba(255,255,255,0.1); }
+    .contact-item-text .ci-label { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
+    .contact-item-text .ci-value { font-size: 0.92rem; font-weight: 500; color: white; margin-top: 0.1rem; }
+
+    .contact-right { }
+    .contact-cta-box {
+      background: var(--sky);
+      border-radius: 16px; padding: 2.5rem 2rem;
+      text-align: center;
+    }
+    .contact-cta-box h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.8rem; font-weight: 900;
+      text-transform: uppercase; color: white;
+      line-height: 1; margin-bottom: 0.5rem;
+    }
+    .contact-cta-box p { font-size: 0.88rem; color: rgba(255,255,255,0.8); margin-bottom: 1.5rem; line-height: 1.6; }
+    .wa-btn {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: #25D366; color: white;
+      font-size: 0.95rem; font-weight: 700;
+      padding: 0.9rem 2rem; border-radius: 6px;
+      text-decoration: none; transition: opacity 0.2s, transform 0.15s;
+    }
+    .wa-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+    .contact-note {
+      margin-top: 1rem; font-size: 0.75rem;
+      color: rgba(255,255,255,0.6); text-align: center;
+    }
+    .area-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.8rem; }
+    .area-chip {
+      font-size: 0.72rem; font-weight: 500;
+      padding: 0.25rem 0.7rem; border-radius: 20px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.7);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111D26;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 1.5rem 0;
+    }
+    .footer-inner {
+      max-width: 1080px; margin: 0 auto; padding: 0 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem; font-weight: 900;
+      color: rgba(255,255,255,0.5); letter-spacing: 0.02em;
+    }
+    .footer-logo span { color: var(--sky); opacity: 0.6; }
+    .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.25); }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { font-size: 0.78rem; color: rgba(255,255,255,0.35); text-decoration: none; }
+    .footer-links a:hover { color: rgba(255,255,255,0.6); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      .hero-inner, .services-head, .why-layout, .contact-layout { grid-template-columns: 1fr; gap: 2rem; }
+      .hero { min-height: auto; }
+      .services-grid, .testi-grid { grid-template-columns: 1fr; }
+      .hero-card-sm { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+      .footer-inner { flex-direction: column; gap: 0.5rem; text-align: center; }
+      .footer-links { display: none; }
+    }
+    @media (max-width: 500px) {
+      .hero-btns { flex-direction: column; }
+      .hero-card-sm { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ── DISCLAIMER ── */
+    .disclaimer {
+      background: #1A2B38;
+      border-top: 3px solid var(--sky);
+      padding: 1.2rem 0;
+    }
+    .disclaimer-inner {
+      max-width: 1080px; margin: 0 auto; padding: 0 2rem;
+      display: flex; align-items: flex-start; gap: 0.8rem;
+    }
+    .disclaimer-icon { font-size: 1rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .disclaimer p {
+      font-size: 0.75rem; font-weight: 300;
+      color: rgba(255,255,255,0.55); line-height: 1.7;
+    }
+    .disclaimer p strong { color: rgba(255,255,255,0.85); font-weight: 600; }
+    .disclaimer p a {
+      color: var(--sky); text-decoration: none; font-weight: 500;
+      margin-left: 0.3rem;
+    }
+    .disclaimer p a:hover { text-decoration: underline; }
+
+  </style>
+</head>
+<body>
+
+<!-- DEMO BANNER -->
+<div class="demo-banner">
+  This is a demo site created by Seventh Studio to showcase the Presence Package.
+  <a href="https://seventhstudio.co.za" target="_blank">View our packages →</a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Sparkle<span>Clean</span> Co.</a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Get a Quote</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Trusted Home Cleaning</div>
+      <h1 class="hero-title">
+        Your Home,<br>
+        <span class="sky">Spotlessly</span><br>
+        Clean.
+      </h1>
+      <p class="hero-sub">
+        Professional home cleaning you can trust.
+        <strong>Reliable, thorough, and always on time</strong> — so you can focus on what matters most.
+      </p>
+      <div class="hero-btns">
+        <a href="https://wa.me/27600000000" class="btn-primary">💬 WhatsApp Us</a>
+        <a href="#services" class="btn-secondary">See Our Services</a>
+      </div>
+      <div class="hero-trust">
+        <span class="trust-item">Vetted & trusted cleaners</span>
+        <span class="trust-item">Flexible scheduling</span>
+        <span class="trust-item">Satisfaction guaranteed</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card-sm">
+        <div class="hero-card-mini">
+          <div class="mini-num">200+</div>
+          <div class="mini-lbl">Happy clients</div>
+        </div>
+        <div class="hero-card-mini">
+          <div class="mini-num">4.9★</div>
+          <div class="mini-lbl">Average rating</div>
+        </div>
+        <div class="hero-card-mini">
+          <div class="mini-num">6+</div>
+          <div class="mini-lbl">Years experience</div>
+        </div>
+        <div class="hero-card-mini">
+          <div class="mini-num">100%</div>
+          <div class="mini-lbl">Satisfaction rate</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="container">
+    <div class="services-head">
+      <div>
+        <p class="section-label">What We Offer</p>
+        <h2 class="section-title">Services That <span class="sky">Shine.</span></h2>
+      </div>
+      <p class="section-sub">From a quick freshen-up to a deep clean that reaches every corner — we've got your home covered.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🧹</div>
+        <h3>Regular Clean</h3>
+        <p>Weekly or fortnightly cleaning to keep your home consistently fresh. Dusting, vacuuming, mopping, and surface cleaning throughout.</p>
+        <div class="service-tag">All areas · Weekly or fortnightly</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">✨</div>
+        <h3>Deep Clean</h3>
+        <p>A thorough top-to-bottom clean for when your home needs extra attention. Inside cupboards, appliances, skirting boards, and more.</p>
+        <div class="service-tag">Full home · Once-off or seasonal</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📦</div>
+        <h3>Move In / Out Clean</h3>
+        <p>Leave your old home spotless or arrive to a fresh start. We handle every surface so your deposit is protected.</p>
+        <div class="service-tag">Full property · Once-off</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="section" id="why">
+  <div class="container">
+    <div class="why-layout">
+      <div>
+        <p class="section-label">Why Choose Us</p>
+        <h2 class="section-title">Cleaning You Can <span class="sky">Count On.</span></h2>
+        <div class="why-points">
+          <div class="why-point">
+            <div class="why-num">01</div>
+            <div class="why-point-text">
+              <h4>Vetted & Reliable Staff</h4>
+              <p>Every cleaner is background-checked, trained, and held to our high standards. You only ever get someone we trust in your home.</p>
+            </div>
+          </div>
+          <div class="why-point">
+            <div class="why-num">02</div>
+            <div class="why-point-text">
+              <h4>Flexible Scheduling</h4>
+              <p>Morning, afternoon, or weekend — we work around your schedule, not ours. Easy rescheduling with 24 hours notice.</p>
+            </div>
+          </div>
+          <div class="why-point">
+            <div class="why-num">03</div>
+            <div class="why-point-text">
+              <h4>Satisfaction Guaranteed</h4>
+              <p>Not happy with something? We come back and fix it at no extra charge. Your satisfaction is non-negotiable to us.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="why-visual">
+        <div class="why-visual-title">What's included in every clean</div>
+        <div class="checklist">
+          <div class="check-item"><div class="check-icon">✓</div><span>Dusting all surfaces and furniture</span></div>
+          <div class="check-item"><div class="check-icon">✓</div><span>Vacuuming carpets and rugs</span></div>
+          <div class="check-item"><div class="check-icon">✓</div><span>Mopping hard floors</span></div>
+          <div class="check-item"><div class="check-icon">✓</div><span>Cleaning bathrooms and toilets</span></div>
+          <div class="check-item"><div class="check-icon">✓</div><span>Wiping kitchen surfaces and sink</span></div>
+          <div class="check-item"><div class="check-icon">✓</div><span>Emptying bins and replacing bags</span></div>
+          <div class="check-item"><div class="check-icon">✓</div><span>Making beds (on request)</span></div>
+        </div>
+        <div class="why-visual-footer">
+          <p>Rated by 200+ homeowners</p>
+          <div class="why-rating">★★★★★</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section" id="testimonials">
+  <div class="container">
+    <p class="section-label">What Clients Say</p>
+    <h2 class="section-title">Real Homes. <span class="sky">Real Results.</span></h2>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <p>Sparkle Clean Co. has been cleaning my home for 6 months now and I genuinely cannot imagine going back. The team is thorough, respectful, and always on time.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">NM</div>
+          <div>
+            <div class="testi-name">Nomsa M.</div>
+            <div class="testi-loc">Sandton, Johannesburg</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <p>Used them for a move-out clean and my landlord was honestly shocked at how good it looked. Got my full deposit back. Highly recommend!</p>
+        <div class="testi-author">
+          <div class="testi-avatar">TK</div>
+          <div>
+            <div class="testi-name">Thabo K.</div>
+            <div class="testi-loc">Midrand, Johannesburg</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <p>As a working mum I have zero time. These ladies are a lifesaver — my house is always spotless and they even leave it smelling amazing. Worth every rand.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">LP</div>
+          <div>
+            <div class="testi-name">Lerato P.</div>
+            <div class="testi-loc">Fourways, Johannesburg</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="container">
+    <div class="contact-layout">
+      <div class="contact-left">
+        <p class="section-label">Get In Touch</p>
+        <h2 class="section-title">Ready for a <span class="sky">Sparkling</span> Home?</h2>
+        <p class="section-sub">Reach out via WhatsApp or give us a call — we'll get back to you within an hour during business hours.</p>
+        <div class="contact-details">
+          <a href="https://wa.me/27600000000" class="contact-item">
+            <div class="contact-item-icon ci-wa">💬</div>
+            <div class="contact-item-text">
+              <div class="ci-label">WhatsApp</div>
+              <div class="ci-value">060 000 0000</div>
+            </div>
+          </a>
+          <a href="tel:+27600000000" class="contact-item">
+            <div class="contact-item-icon ci-phone">📞</div>
+            <div class="contact-item-text">
+              <div class="ci-label">Call Us</div>
+              <div class="ci-value">060 000 0000</div>
+            </div>
+          </a>
+          <a href="mailto:hello@sparkleclean.co.za" class="contact-item">
+            <div class="contact-item-icon ci-email">✉️</div>
+            <div class="contact-item-text">
+              <div class="ci-label">Email</div>
+              <div class="ci-value">hello@sparkleclean.co.za</div>
+            </div>
+          </a>
+          <div class="contact-item">
+            <div class="contact-item-icon ci-area">📍</div>
+            <div class="contact-item-text">
+              <div class="ci-label">Areas We Serve</div>
+              <div class="area-chips">
+                <span class="area-chip">Sandton</span>
+                <span class="area-chip">Fourways</span>
+                <span class="area-chip">Midrand</span>
+                <span class="area-chip">Randburg</span>
+                <span class="area-chip">Roodepoort</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-right">
+        <div class="contact-cta-box">
+          <h3>Book Your Clean Today</h3>
+          <p>WhatsApp us your address, preferred date, and which service you need. We'll confirm your slot within the hour.</p>
+          <a href="https://wa.me/27600000000?text=Hi! I'd like to book a clean." class="wa-btn">
+            💬 WhatsApp to Book
+          </a>
+          <p class="contact-note">Mon – Sat · 7:00am – 5:00pm · Same-day slots available</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Sparkle<span>Clean</span> Co.</div>
+    <span class="footer-copy">© 2026 Sparkle Clean Co. · Johannesburg</span>
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#why">Why Us</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<!-- DISCLAIMER BANNER -->
+<div class="disclaimer">
+  <div class="disclaimer-inner">
+    <span class="disclaimer-icon">⚠️</span>
+    <p>
+      <strong>This is a concept website created by Seventh Studio</strong> to demonstrate the Presence Package.
+      Sparkle Clean Co. is a fictional business created for demonstration purposes only.
+      Any resemblance to a real company of the same or similar name is purely coincidental and unintentional.
+      All contact details, phone numbers, WhatsApp links, email addresses, and testimonials shown on this site are fictitious — please do not attempt to contact them.
+      <a href="https://seventhstudio.co.za" target="_blank">Visit Seventh Studio</a> to enquire about a website for your business.
+    </p>
+  </div>
+</div>
+
+</body>
+</html>

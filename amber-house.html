@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Amber House Guest Lodge — Drakensberg, KZN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --terra:    #C4663A;
+      --terra-dk: #9E4E28;
+      --terra-lt: #FBF0EB;
+      --olive:    #4A5C3A;
+      --olive-lt: #EEF2EA;
+      --cream:    #FAF6F0;
+      --sand:     #F0E8DC;
+      --ink:      #2C2018;
+      --mid:      #7A6A5A;
+      --border:   #E0D4C4;
+      --white:    #FFFFFF;
+      --serif:    'Lora', Georgia, serif;
+      --sans:     'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* ── DEMO BANNER ── */
+    .demo-banner {
+      background: var(--olive);
+      color: rgba(255,255,255,0.8);
+      text-align: center;
+      padding: 0.55rem 1rem;
+      font-size: 0.75rem;
+      font-family: var(--sans);
+    }
+    .demo-banner a { color: #c8dfa0; text-decoration: none; font-weight: 500; margin-left: 0.3rem; }
+    .demo-banner a:hover { text-decoration: underline; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(250,246,240,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1140px; margin: 0 auto; padding: 0 2.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      height: 68px;
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.15rem; font-weight: 700;
+      color: var(--ink); text-decoration: none;
+      letter-spacing: 0.01em; line-height: 1.2;
+    }
+    .nav-logo span { display: block; font-size: 0.6rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); font-family: var(--sans); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.82rem; font-weight: 400;
+      color: var(--mid); text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta {
+      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em;
+      color: var(--white); background: var(--terra);
+      padding: 0.5rem 1.3rem; text-decoration: none;
+      transition: background 0.2s; border-radius: 2px;
+    }
+    .nav-cta:hover { background: var(--terra-dk); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; min-height: 100vh;
+      display: flex; align-items: flex-end; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1472396961693-142e6e269027?w=1800&auto=format&fit=crop&q=85');
+      background-size: cover; background-position: center 40%;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(30,18,10,0.9) 0%,
+        rgba(30,18,10,0.5) 40%,
+        rgba(30,18,10,0.1) 100%
+      );
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: 1140px; margin: 0 auto;
+      padding: 0 2.5rem 5rem; width: 100%;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: rgba(196,102,58,0.25); border: 1px solid rgba(196,102,58,0.5);
+      padding: 0.35rem 1rem; margin-bottom: 1.5rem;
+      font-size: 0.68rem; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: #f4b98a;
+      font-family: var(--sans);
+    }
+    .hero-badge::before { content: '★'; font-size: 0.6rem; }
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(3.5rem, 8.5vw, 7.5rem);
+      font-weight: 700; line-height: 1.0;
+      color: var(--white); margin-bottom: 1.5rem;
+      letter-spacing: -0.01em;
+    }
+    .hero-title em { font-style: italic; color: #f4b98a; }
+    .hero-bottom {
+      display: flex; justify-content: space-between;
+      align-items: flex-end; gap: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+    .hero-sub {
+      font-size: 1rem; font-weight: 300;
+      color: rgba(255,255,255,0.65); line-height: 1.8;
+      max-width: 420px;
+    }
+    .hero-sub strong { color: rgba(255,255,255,0.9); font-weight: 400; }
+    .hero-pills {
+      display: flex; gap: 0.6rem; flex-wrap: wrap; justify-content: flex-end;
+    }
+    .hero-pill {
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+      padding: 0.4rem 0.9rem; font-size: 0.75rem; font-weight: 400;
+      color: rgba(255,255,255,0.75); white-space: nowrap;
+    }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: var(--olive); padding: 1.1rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+    .trust-inner {
+      max-width: 1140px; margin: 0 auto; padding: 0 2.5rem;
+      display: flex; justify-content: space-around; align-items: center;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-size: 0.8rem; font-weight: 400; color: rgba(255,255,255,0.75);
+      font-family: var(--sans);
+    }
+    .trust-item .ti { font-size: 1rem; }
+
+    /* ── SHARED ── */
+    .sec { padding: 6rem 0; }
+    .wrap { max-width: 1140px; margin: 0 auto; padding: 0 2.5rem; }
+    .sec-tag {
+      font-size: 0.65rem; font-weight: 500; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--terra);
+      margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.6rem;
+      font-family: var(--sans);
+    }
+    .sec-tag::before { content: ''; width: 18px; height: 1px; background: var(--terra); display: block; }
+    .sec-title {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+      font-weight: 700; line-height: 1.1;
+      color: var(--ink); margin-bottom: 0.8rem;
+      letter-spacing: -0.01em;
+    }
+    .sec-title em { font-style: italic; color: var(--terra); }
+    .sec-sub {
+      font-size: 0.95rem; font-weight: 300;
+      color: var(--mid); line-height: 1.85; max-width: 520px;
+    }
+    .btn-terra {
+      display: inline-block;
+      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--white);
+      background: var(--terra); padding: 0.8rem 1.8rem;
+      text-decoration: none; border-radius: 2px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-terra:hover { background: var(--terra-dk); transform: translateY(-1px); }
+    .btn-outline-terra {
+      display: inline-block;
+      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--terra);
+      border: 1.5px solid var(--terra); padding: 0.8rem 1.8rem;
+      text-decoration: none; border-radius: 2px;
+      transition: all 0.2s;
+    }
+    .btn-outline-terra:hover { background: var(--terra); color: var(--white); }
+
+    /* ── ABOUT ── */
+    #about { border-bottom: 1px solid var(--border); }
+    .about-layout {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 6rem; align-items: center;
+    }
+    .about-imgs {
+      position: relative; display: grid;
+      grid-template-columns: 1fr 1fr; gap: 0.75rem;
+    }
+    .about-img-main {
+      grid-column: 1 / -1; aspect-ratio: 16/9; overflow: hidden;
+    }
+    .about-img-main img { width: 100%; height: 100%; object-fit: cover; }
+    .about-img-sm { aspect-ratio: 1/1; overflow: hidden; }
+    .about-img-sm img { width: 100%; height: 100%; object-fit: cover; }
+    .about-img-accent {
+      background: var(--terra); display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 0.3rem;
+      padding: 1rem;
+    }
+    .about-img-accent .n {
+      font-family: var(--serif); font-size: 2.5rem; font-weight: 700;
+      color: var(--white); line-height: 1;
+    }
+    .about-img-accent .l {
+      font-size: 0.62rem; font-weight: 400; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(255,255,255,0.7);
+      text-align: center;
+    }
+    .about-text .sec-sub { max-width: 100%; margin-bottom: 1.5rem; }
+    .about-features {
+      display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 2rem;
+    }
+    .about-feat {
+      display: flex; align-items: center; gap: 0.7rem;
+      font-size: 0.88rem; font-weight: 400; color: var(--ink);
+    }
+    .about-feat::before {
+      content: '✓'; width: 20px; height: 20px;
+      background: var(--olive-lt); color: var(--olive);
+      border-radius: 50%; display: flex; align-items: center;
+      justify-content: center; font-size: 0.65rem; font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* ── ROOMS ── */
+    #rooms { background: var(--sand); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .rooms-head {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 3rem; align-items: end; margin-bottom: 3.5rem;
+    }
+    .rooms-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .room-card {
+      background: var(--white); border: 1px solid var(--border);
+      overflow: hidden; transition: box-shadow 0.25s, transform 0.25s;
+    }
+    .room-card:hover { box-shadow: 0 12px 40px rgba(196,102,58,0.12); transform: translateY(-4px); }
+    .room-img { aspect-ratio: 4/3; overflow: hidden; position: relative; }
+    .room-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+    .room-card:hover .room-img img { transform: scale(1.05); }
+    .room-badge {
+      position: absolute; top: 0.8rem; left: 0.8rem;
+      background: var(--terra); color: white;
+      font-size: 0.62rem; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; padding: 0.25rem 0.65rem;
+      font-family: var(--sans);
+    }
+    .room-body { padding: 1.5rem; }
+    .room-name {
+      font-family: var(--serif); font-size: 1.2rem; font-weight: 700;
+      color: var(--ink); margin-bottom: 0.4rem;
+    }
+    .room-desc {
+      font-size: 0.85rem; font-weight: 300; color: var(--mid);
+      line-height: 1.7; margin-bottom: 1.2rem;
+    }
+    .room-options { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.2rem; }
+    .room-opt {
+      font-size: 0.7rem; font-weight: 400; letter-spacing: 0.06em;
+      padding: 0.25rem 0.65rem; background: var(--terra-lt);
+      color: var(--terra-dk); border-radius: 20px;
+      font-family: var(--sans);
+    }
+    .room-footer {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 1rem; border-top: 1px solid var(--border);
+    }
+    .room-price { font-family: var(--serif); font-size: 1.1rem; font-weight: 700; color: var(--terra); }
+    .room-price span { font-size: 0.72rem; font-weight: 400; color: var(--mid); font-family: var(--sans); }
+    .room-enquire {
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--terra);
+      text-decoration: none; font-family: var(--sans);
+      border-bottom: 1px solid var(--terra); padding-bottom: 0.1rem;
+      transition: color 0.2s;
+    }
+    .room-enquire:hover { color: var(--terra-dk); }
+
+    /* ── AMENITIES ── */
+    #amenities { border-bottom: 1px solid var(--border); }
+    .amen-layout {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 6rem; align-items: center;
+    }
+    .amen-img { aspect-ratio: 4/5; overflow: hidden; }
+    .amen-img img { width: 100%; height: 100%; object-fit: cover; }
+    .amen-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1rem; margin-top: 2rem;
+    }
+    .amen-item {
+      display: flex; gap: 0.8rem; align-items: flex-start;
+      padding: 1rem; background: var(--sand);
+      border: 1px solid var(--border);
+      transition: border-color 0.2s;
+    }
+    .amen-item:hover { border-color: var(--terra); }
+    .amen-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .amen-item h4 {
+      font-family: var(--serif); font-size: 0.95rem; font-weight: 600;
+      color: var(--ink); margin-bottom: 0.15rem;
+    }
+    .amen-item p { font-size: 0.78rem; font-weight: 300; color: var(--mid); line-height: 1.6; }
+
+    /* ── GALLERY ── */
+    #gallery { background: var(--ink); border-bottom: 1px solid #3a2a1a; }
+    #gallery .sec-tag { color: #f4b98a; }
+    #gallery .sec-tag::before { background: #f4b98a; }
+    #gallery .sec-title { color: var(--white); }
+    .gallery-head { margin-bottom: 2.5rem; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 240px 200px;
+      gap: 0.6rem;
+    }
+    .g-item { overflow: hidden; cursor: pointer; }
+    .g-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; display: block; }
+    .g-item:hover img { transform: scale(1.06); }
+    .g-item.wide { grid-column: span 2; }
+    .g-item.tall { grid-row: span 2; }
+
+    /* ── TESTIMONIALS ── */
+    #testimonials { background: var(--olive); border-bottom: 1px solid rgba(0,0,0,0.15); overflow: hidden; }
+    #testimonials .sec-tag { color: #c8dfa0; }
+    #testimonials .sec-tag::before { background: #c8dfa0; }
+    #testimonials .sec-title { color: var(--white); }
+    .testi-top {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 3rem;
+    }
+    .testi-nav { display: flex; gap: 0.5rem; }
+    .tn-btn {
+      width: 44px; height: 44px; border: 1px solid rgba(255,255,255,0.25);
+      background: transparent; color: white; cursor: pointer;
+      font-size: 1rem; display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .tn-btn:hover { background: rgba(255,255,255,0.15); }
+    .tslider { overflow: hidden; }
+    .ttrack { display: flex; transition: transform 0.55s cubic-bezier(0.4,0,0.2,1); }
+    .tslide {
+      min-width: 100%;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    }
+    .tc {
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+      padding: 2rem 1.8rem;
+    }
+    .tc-stars { color: #f4b98a; font-size: 0.8rem; letter-spacing: 0.1em; margin-bottom: 1rem; }
+    .tc-text {
+      font-family: var(--serif); font-style: italic; font-weight: 400;
+      font-size: 1rem; line-height: 1.8;
+      color: rgba(255,255,255,0.85); margin-bottom: 1.5rem;
+    }
+    .tc-rule { height: 1px; background: rgba(255,255,255,0.12); margin-bottom: 1.2rem; }
+    .tc-author { display: flex; align-items: center; gap: 0.8rem; }
+    .tc-av {
+      width: 36px; height: 36px; background: var(--terra);
+      color: white; font-size: 0.75rem; font-weight: 500;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      border-radius: 50%;
+    }
+    .tc-name { font-size: 0.85rem; font-weight: 500; color: var(--white); }
+    .tc-loc { font-size: 0.72rem; color: rgba(255,255,255,0.45); }
+    .tdots { display: flex; gap: 0.5rem; justify-content: center; margin-top: 2.5rem; }
+    .tdot {
+      width: 28px; height: 3px; background: rgba(255,255,255,0.2);
+      border: none; cursor: pointer; transition: all 0.2s;
+    }
+    .tdot.active { background: #f4b98a; width: 44px; }
+
+    /* ── ENQUIRE ── */
+    #enquire { border-bottom: 1px solid var(--border); }
+    .enquire-layout {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 6rem; align-items: start;
+    }
+    .enquire-info { padding-top: 1rem; }
+    .enquire-info .sec-sub { max-width: 100%; margin-bottom: 2rem; }
+    .e-details { display: flex; flex-direction: column; gap: 0.8rem; }
+    .e-item {
+      display: flex; gap: 1rem; align-items: flex-start;
+      padding: 0.9rem 1rem; background: var(--sand);
+      border: 1px solid var(--border);
+    }
+    .e-icon { font-size: 1.1rem; flex-shrink: 0; }
+    .e-label {
+      font-size: 0.62rem; font-weight: 500; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--mid); margin-bottom: 0.15rem;
+      font-family: var(--sans);
+    }
+    .e-val { font-size: 0.88rem; color: var(--ink); font-weight: 400; }
+    .e-form { display: flex; flex-direction: column; gap: 1rem; }
+    .e-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .e-group { display: flex; flex-direction: column; gap: 0.35rem; }
+    .e-group label {
+      font-size: 0.65rem; font-weight: 500; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--mid); font-family: var(--sans);
+    }
+    .e-group input,
+    .e-group select,
+    .e-group textarea {
+      background: var(--white); border: 1.5px solid var(--border);
+      color: var(--ink); font-family: var(--sans);
+      font-size: 0.88rem; font-weight: 300;
+      padding: 0.7rem 1rem; outline: none;
+      transition: border-color 0.2s; border-radius: 2px;
+      -webkit-appearance: none;
+    }
+    .e-group input::placeholder,
+    .e-group textarea::placeholder { color: #b0a090; }
+    .e-group input:focus,
+    .e-group select:focus,
+    .e-group textarea:focus { border-color: var(--terra); }
+    .e-group textarea { resize: vertical; min-height: 100px; }
+    .e-submit {
+      cursor: pointer; border: none; border-radius: 2px;
+      font-family: var(--sans); font-size: 0.8rem;
+      font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--white);
+      background: var(--terra); padding: 0.9rem 2rem;
+      transition: background 0.2s; align-self: flex-start;
+    }
+    .e-submit:hover { background: var(--terra-dk); }
+    .e-note {
+      font-size: 0.72rem; color: var(--mid); line-height: 1.6;
+      font-family: var(--sans);
+    }
+
+    /* ── MAP ── */
+    #findus { background: var(--sand); border-bottom: 1px solid var(--border); }
+    .findus-layout {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: start;
+    }
+    .map-wrap {
+      aspect-ratio: 4/3; overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .map-wrap iframe { width: 100%; height: 100%; border: none; display: block; }
+    .findus-info { padding-top: 0.5rem; }
+    .findus-info .sec-sub { max-width: 100%; margin-bottom: 2rem; }
+    .directions {
+      display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 2rem;
+    }
+    .dir-item {
+      display: flex; gap: 1rem; align-items: flex-start;
+      padding: 0.9rem 1rem; background: var(--white);
+      border: 1px solid var(--border);
+    }
+    .dir-icon { font-size: 1.1rem; flex-shrink: 0; }
+    .dir-label {
+      font-size: 0.62rem; font-weight: 500; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--mid); margin-bottom: 0.15rem;
+      font-family: var(--sans);
+    }
+    .dir-val { font-size: 0.88rem; color: var(--ink); font-weight: 400; line-height: 1.5; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink); padding: 3rem 0 1.5rem;
+    }
+    .footer-top {
+      max-width: 1140px; margin: 0 auto; padding: 0 2.5rem;
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem; padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 1.5rem;
+    }
+    .footer-brand .fl {
+      font-family: var(--serif); font-size: 1.2rem; font-weight: 700;
+      color: var(--white); margin-bottom: 0.3rem;
+    }
+    .footer-brand .fl span {
+      display: block; font-size: 0.6rem; font-weight: 400;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: #f4b98a; font-family: var(--sans); margin-bottom: 0.8rem;
+    }
+    .footer-brand p { font-size: 0.82rem; font-weight: 300; color: rgba(255,255,255,0.45); line-height: 1.7; }
+    .footer-col h4 {
+      font-family: var(--sans); font-size: 0.65rem; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(255,255,255,0.4); margin-bottom: 1rem;
+    }
+    .footer-col a, .footer-col p {
+      display: block; font-size: 0.82rem; font-weight: 300;
+      color: rgba(255,255,255,0.55); text-decoration: none;
+      margin-bottom: 0.5rem; line-height: 1.5;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: #f4b98a; }
+    .footer-bottom {
+      max-width: 1140px; margin: 0 auto; padding: 0 2.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-copy { font-size: 0.72rem; color: rgba(255,255,255,0.2); }
+    .footer-socials { display: flex; gap: 1rem; }
+    .footer-socials a {
+      font-size: 0.72rem; color: rgba(255,255,255,0.3);
+      text-decoration: none; letter-spacing: 0.08em;
+      transition: color 0.2s;
+    }
+    .footer-socials a:hover { color: #f4b98a; }
+
+    /* ── DISCLAIMER ── */
+    .disclaimer {
+      background: #1a0e06;
+      border-top: 3px solid var(--terra);
+      padding: 1.2rem 0;
+    }
+    .disclaimer-inner {
+      max-width: 1140px; margin: 0 auto; padding: 0 2.5rem;
+      display: flex; align-items: flex-start; gap: 0.8rem;
+    }
+    .disclaimer-icon { font-size: 1rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .disclaimer p {
+      font-size: 0.75rem; font-weight: 300;
+      color: rgba(255,255,255,0.42); line-height: 1.7;
+      font-family: var(--sans);
+    }
+    .disclaimer p strong { color: rgba(255,255,255,0.78); font-weight: 500; }
+    .disclaimer p a { color: #f4b98a; text-decoration: none; font-weight: 500; margin-left: 0.3rem; }
+    .disclaimer p a:hover { text-decoration: underline; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .about-layout, .amen-layout, .rooms-head,
+      .enquire-layout, .findus-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+      .rooms-grid { grid-template-columns: 1fr; }
+      .tslide { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: auto; }
+      .g-item.wide, .g-item.tall { grid-column: auto; grid-row: auto; }
+      .gallery-grid .g-item { aspect-ratio: 4/3; }
+      .amen-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .e-row { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .hero-bottom { flex-direction: column; align-items: flex-start; }
+      .footer-bottom { flex-direction: column; gap: 0.6rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- DEMO BANNER -->
+<div class="demo-banner">
+  This is a concept site created by Seventh Studio to showcase the Showcase Package.
+  <a href="https://seventhstudio.co.za" target="_blank">View our packages →</a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      Amber House Guest Lodge
+      <span>Drakensberg, KwaZulu-Natal</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#rooms">Rooms</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#enquire">Enquire</a></li>
+      <li><a href="#findus">Find Us</a></li>
+    </ul>
+    <a href="#enquire" class="nav-cta">Book Now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Drakensberg · KwaZulu-Natal</div>
+    <h1 class="hero-title">
+      Wake Up to the<br>
+      <em>Mountains.</em>
+    </h1>
+    <div class="hero-bottom">
+      <p class="hero-sub">
+        A family-friendly guest lodge nestled in the heart of the Drakensberg.
+        <strong>Breathtaking views, warm hospitality, and memories that last a lifetime.</strong>
+      </p>
+      <div class="hero-pills">
+        <div class="hero-pill">🏔️ Mountain Views</div>
+        <div class="hero-pill">👨‍👩‍👧 Family Friendly</div>
+        <div class="hero-pill">🌿 Nature Trails</div>
+        <div class="hero-pill">🍳 Breakfast Included</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item"><span class="ti">★★★★★</span> Rated 4.9 on Google</div>
+    <div class="trust-item"><span class="ti">🏡</span> 12 Self-Catering Units</div>
+    <div class="trust-item"><span class="ti">🍳</span> Breakfast Available Daily</div>
+    <div class="trust-item"><span class="ti">🐾</span> Pet-Friendly on Request</div>
+    <div class="trust-item"><span class="ti">📶</span> Free WiFi Throughout</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="sec" id="about">
+  <div class="wrap">
+    <div class="about-layout">
+      <div class="about-imgs">
+        <div class="about-img-main">
+          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1000&auto=format&fit=crop&q=80" alt="Drakensberg mountains"/>
+        </div>
+        <div class="about-img-sm">
+          <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&auto=format&fit=crop&q=80" alt="Lodge accommodation"/>
+        </div>
+        <div class="about-img-accent">
+          <div class="n">15+</div>
+          <div class="l">Years welcoming families</div>
+        </div>
+      </div>
+      <div class="about-text">
+        <p class="sec-tag">Our Story</p>
+        <h2 class="sec-title">A Home Away From<br><em>Home.</em></h2>
+        <p class="sec-sub">Amber House Guest Lodge has been welcoming South African families for over 15 years. Nestled at the foot of the Drakensberg escarpment, we offer a peaceful retreat where children roam freely, braai fires burn at sunset, and the only alarm clock is birdsong.</p>
+        <p class="sec-sub" style="margin-top:1rem;">Whether you're here for a long weekend or a full week, our warm and experienced team will make sure you leave feeling rested, recharged, and already planning your next visit.</p>
+        <div class="about-features">
+          <div class="about-feat">Fully equipped self-catering kitchens in all units</div>
+          <div class="about-feat">Secure parking and 24-hour security</div>
+          <div class="about-feat">Swimming pool, braai facilities, and children's play area</div>
+          <div class="about-feat">Hiking trails accessible directly from the lodge</div>
+          <div class="about-feat">15 minutes from Cathedral Peak and Champagne Valley</div>
+        </div>
+        <a href="#rooms" class="btn-terra">View Our Rooms</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROOMS -->
+<section class="sec" id="rooms">
+  <div class="wrap">
+    <div class="rooms-head">
+      <div>
+        <p class="sec-tag">Accommodation</p>
+        <h2 class="sec-title">Find Your<br><em>Perfect Stay.</em></h2>
+      </div>
+      <p class="sec-sub">Choose from three room types — all with mountain views, private entrances, and everything your family needs to settle in and relax.</p>
+    </div>
+    <div class="rooms-grid">
+
+      <div class="room-card">
+        <div class="room-img">
+          <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=700&auto=format&fit=crop&q=80" alt="Standard Room"/>
+          <div class="room-badge">Sleeps 2–3</div>
+        </div>
+        <div class="room-body">
+          <div class="room-name">Garden Room</div>
+          <p class="room-desc">A cosy, well-appointed room with garden views and a private patio. Perfect for couples or a small family.</p>
+          <div class="room-options">
+            <span class="room-opt">Queen Bed</span>
+            <span class="room-opt">En-suite Bathroom</span>
+            <span class="room-opt">Kitchenette</span>
+            <span class="room-opt">Patio</span>
+          </div>
+          <div class="room-footer">
+            <div class="room-price">R980 <span>per night</span></div>
+            <a href="#enquire" class="room-enquire">Enquire →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="room-card">
+        <div class="room-img">
+          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=700&auto=format&fit=crop&q=80" alt="Family Chalet"/>
+          <div class="room-badge">Sleeps 4–6</div>
+        </div>
+        <div class="room-body">
+          <div class="room-name">Family Chalet</div>
+          <p class="room-desc">Our most popular option. Spacious, fully self-catering with a full kitchen, private braai, and stunning mountain views.</p>
+          <div class="room-options">
+            <span class="room-opt">2 Bedrooms</span>
+            <span class="room-opt">Full Kitchen</span>
+            <span class="room-opt">Private Braai</span>
+            <span class="room-opt">Mountain View</span>
+          </div>
+          <div class="room-footer">
+            <div class="room-price">R1,650 <span>per night</span></div>
+            <a href="#enquire" class="room-enquire">Enquire →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="room-card">
+        <div class="room-img">
+          <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=700&auto=format&fit=crop&q=80" alt="Luxury Suite"/>
+          <div class="room-badge">Sleeps 2</div>
+        </div>
+        <div class="room-body">
+          <div class="room-name">Amber Suite</div>
+          <p class="room-desc">Our premium suite with panoramic mountain views, a clawfoot bath, and a private deck. An unforgettable retreat for two.</p>
+          <div class="room-options">
+            <span class="room-opt">King Bed</span>
+            <span class="room-opt">Clawfoot Bath</span>
+            <span class="room-opt">Private Deck</span>
+            <span class="room-opt">Panoramic View</span>
+          </div>
+          <div class="room-footer">
+            <div class="room-price">R2,200 <span>per night</span></div>
+            <a href="#enquire" class="room-enquire">Enquire →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- AMENITIES -->
+<section class="sec" id="amenities">
+  <div class="wrap">
+    <div class="amen-layout">
+      <div>
+        <p class="sec-tag">What's Included</p>
+        <h2 class="sec-title">Everything You<br><em>Need.</em></h2>
+        <p class="sec-sub">We've thought of everything so you don't have to. Just pack your bags and come ready to relax.</p>
+        <div class="amen-grid">
+          <div class="amen-item">
+            <div class="amen-icon">🏊</div>
+            <div><h4>Swimming Pool</h4><p>Heated pool open year-round with mountain views</p></div>
+          </div>
+          <div class="amen-item">
+            <div class="amen-icon">🔥</div>
+            <div><h4>Braai Facilities</h4><p>Private braai areas with wood provided on arrival</p></div>
+          </div>
+          <div class="amen-item">
+            <div class="amen-icon">🥾</div>
+            <div><h4>Hiking Trails</h4><p>Access to marked trails directly from the lodge gate</p></div>
+          </div>
+          <div class="amen-item">
+            <div class="amen-icon">🧒</div>
+            <div><h4>Play Area</h4><p>Safe outdoor play zone with jungle gym and sandpit</p></div>
+          </div>
+          <div class="amen-item">
+            <div class="amen-icon">📶</div>
+            <div><h4>Free WiFi</h4><p>High-speed fibre throughout the property</p></div>
+          </div>
+          <div class="amen-item">
+            <div class="amen-icon">🅿️</div>
+            <div><h4>Secure Parking</h4><p>Covered, gated parking for all guests</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="amen-img">
+        <img src="https://images.unsplash.com/photo-1582610116397-edb72f2edbb0?w=800&auto=format&fit=crop&q=80" alt="Lodge pool and views"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="sec" id="gallery">
+  <div class="wrap">
+    <div class="gallery-head">
+      <p class="sec-tag">Photo Gallery</p>
+      <h2 class="sec-title">See It for<br><em>Yourself.</em></h2>
+    </div>
+    <div class="gallery-grid">
+      <div class="g-item wide"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1000&auto=format&fit=crop&q=80" alt="Drakensberg view"/></div>
+      <div class="g-item"><img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&auto=format&fit=crop&q=80" alt="Room interior"/></div>
+      <div class="g-item"><img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&auto=format&fit=crop&q=80" alt="Suite view"/></div>
+      <div class="g-item"><img src="https://images.unsplash.com/photo-1582610116397-edb72f2edbb0?w=600&auto=format&fit=crop&q=80" alt="Pool area"/></div>
+      <div class="g-item wide"><img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=1000&auto=format&fit=crop&q=80" alt="Mountains at sunrise"/></div>
+      <div class="g-item"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&auto=format&fit=crop&q=80" alt="Family chalet"/></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="sec" id="testimonials">
+  <div class="wrap">
+    <div class="testi-top">
+      <div>
+        <p class="sec-tag">Guest Reviews</p>
+        <h2 class="sec-title">What Our Guests<br><em>Say.</em></h2>
+      </div>
+      <div class="testi-nav">
+        <button class="tn-btn" id="tnPrev">&#8592;</button>
+        <button class="tn-btn" id="tnNext">&#8594;</button>
+      </div>
+    </div>
+    <div class="tslider">
+      <div class="ttrack" id="tnTrack">
+
+        <div class="tslide">
+          <div class="tc">
+            <div class="tc-stars">★★★★★</div>
+            <p class="tc-text">We've come back three years in a row and every time it feels like coming home. The kids absolutely love it — they're outside from sunrise to sunset. The views are unreal.</p>
+            <div class="tc-rule"></div>
+            <div class="tc-author"><div class="tc-av">DV</div><div><div class="tc-name">The Van der Berg Family</div><div class="tc-loc">Pretoria, Gauteng</div></div></div>
+          </div>
+          <div class="tc">
+            <div class="tc-stars">★★★★★</div>
+            <p class="tc-text">Stayed in the Amber Suite for our anniversary and it exceeded every expectation. The clawfoot bath with mountain views — I have no words. Truly special.</p>
+            <div class="tc-rule"></div>
+            <div class="tc-author"><div class="tc-av">SM</div><div><div class="tc-name">Sipho & Mandisa M.</div><div class="tc-loc">Johannesburg, Gauteng</div></div></div>
+          </div>
+          <div class="tc">
+            <div class="tc-stars">★★★★★</div>
+            <p class="tc-text">Clean, well-maintained, and the staff are incredibly warm and helpful. The braai area is fantastic and the hiking trails right from the gate are a huge bonus. Highly recommended.</p>
+            <div class="tc-rule"></div>
+            <div class="tc-author"><div class="tc-av">KN</div><div><div class="tc-name">Karen N.</div><div class="tc-loc">Durban, KZN</div></div></div>
+          </div>
+        </div>
+
+        <div class="tslide">
+          <div class="tc">
+            <div class="tc-stars">★★★★★</div>
+            <p class="tc-text">Perfect family escape. Our 3 kids were in heaven — the pool, the play area, the wide open spaces. And the parents got to actually relax for once. Already booked our next stay.</p>
+            <div class="tc-rule"></div>
+            <div class="tc-author"><div class="tc-av">TP</div><div><div class="tc-name">The Petersen Family</div><div class="tc-loc">Cape Town, Western Cape</div></div></div>
+          </div>
+          <div class="tc">
+            <div class="tc-stars">★★★★★</div>
+            <p class="tc-text">We arrived on a Friday afternoon completely exhausted and left on Sunday feeling like new people. Something about this place just slows everything down. We needed it badly.</p>
+            <div class="tc-rule"></div>
+            <div class="tc-author"><div class="tc-av">LZ</div><div><div class="tc-name">Lungelo Z.</div><div class="tc-loc">Pietermaritzburg, KZN</div></div></div>
+          </div>
+          <div class="tc">
+            <div class="tc-stars">★★★★★</div>
+            <p class="tc-text">The family chalet was perfect for our group of 5. Fully equipped, beautifully clean, and the braai area made for the best Saturday evening. The mountains at sunset were breathtaking.</p>
+            <div class="tc-rule"></div>
+            <div class="tc-author"><div class="tc-av">BM</div><div><div class="tc-name">Bongi M.</div><div class="tc-loc">East London, Eastern Cape</div></div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="tdots">
+      <button class="tdot active" data-i="0"></button>
+      <button class="tdot" data-i="1"></button>
+    </div>
+  </div>
+</section>
+
+<!-- ENQUIRE -->
+<section class="sec" id="enquire">
+  <div class="wrap">
+    <div class="enquire-layout">
+      <div class="enquire-info">
+        <p class="sec-tag">Make a Booking</p>
+        <h2 class="sec-title">Plan Your<br><em>Escape.</em></h2>
+        <p class="sec-sub">Fill in the enquiry form and we'll get back to you within 4 hours with availability and rates. We look forward to welcoming your family.</p>
+        <div class="e-details">
+          <div class="e-item">
+            <div class="e-icon">📞</div>
+            <div>
+              <div class="e-label">Phone & WhatsApp</div>
+              <div class="e-val">073 000 0000</div>
+            </div>
+          </div>
+          <div class="e-item">
+            <div class="e-icon">✉️</div>
+            <div>
+              <div class="e-label">Email</div>
+              <div class="e-val">stay@amberhouselodge.co.za</div>
+            </div>
+          </div>
+          <div class="e-item">
+            <div class="e-icon">🕐</div>
+            <div>
+              <div class="e-label">Check-in / Check-out</div>
+              <div class="e-val">Check-in from 14:00 · Check-out by 10:00</div>
+            </div>
+          </div>
+          <div class="e-item">
+            <div class="e-icon">💳</div>
+            <div>
+              <div class="e-label">Payment</div>
+              <div class="e-val">50% deposit to confirm · Balance due on arrival</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form class="e-form" onsubmit="return false;">
+        <div class="e-row">
+          <div class="e-group">
+            <label>Full Name</label>
+            <input type="text" placeholder="Your full name"/>
+          </div>
+          <div class="e-group">
+            <label>Phone / WhatsApp</label>
+            <input type="tel" placeholder="073 000 0000"/>
+          </div>
+        </div>
+        <div class="e-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="you@email.com"/>
+        </div>
+        <div class="e-row">
+          <div class="e-group">
+            <label>Check-in Date</label>
+            <input type="date"/>
+          </div>
+          <div class="e-group">
+            <label>Check-out Date</label>
+            <input type="date"/>
+          </div>
+        </div>
+        <div class="e-row">
+          <div class="e-group">
+            <label>Room Type</label>
+            <select>
+              <option value="" disabled selected>Select a room</option>
+              <option>Garden Room (Sleeps 2–3)</option>
+              <option>Family Chalet (Sleeps 4–6)</option>
+              <option>Amber Suite (Sleeps 2)</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <div class="e-group">
+            <label>Number of Guests</label>
+            <select>
+              <option value="" disabled selected>Select</option>
+              <option>1–2 guests</option>
+              <option>3–4 guests</option>
+              <option>5–6 guests</option>
+              <option>7+ guests</option>
+            </select>
+          </div>
+        </div>
+        <div class="e-group">
+          <label>Special Requests</label>
+          <textarea placeholder="Pets, dietary requirements, accessibility needs, celebrations..."></textarea>
+        </div>
+        <button type="submit" class="e-submit">Send Enquiry</button>
+        <p class="e-note">We'll respond within 4 hours. A 50% deposit is required to confirm your booking.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FIND US / MAP -->
+<section class="sec" id="findus">
+  <div class="wrap">
+    <div class="findus-layout">
+      <div>
+        <p class="sec-tag">Getting Here</p>
+        <h2 class="sec-title">Find Us in the<br><em>Drakensberg.</em></h2>
+        <p class="sec-sub">We're easy to reach from both Johannesburg and Durban — and the drive through the KZN midlands is part of the experience.</p>
+        <div class="directions">
+          <div class="dir-item">
+            <div class="dir-icon">📍</div>
+            <div>
+              <div class="dir-label">Address</div>
+              <div class="dir-val">Amber House Guest Lodge<br>Champagne Valley Road, Drakensberg, KZN</div>
+            </div>
+          </div>
+          <div class="dir-item">
+            <div class="dir-icon">🚗</div>
+            <div>
+              <div class="dir-label">From Johannesburg</div>
+              <div class="dir-val">Approximately 4 hours via the N3 highway through Harrismith</div>
+            </div>
+          </div>
+          <div class="dir-item">
+            <div class="dir-icon">🚗</div>
+            <div>
+              <div class="dir-label">From Durban</div>
+              <div class="dir-val">Approximately 2.5 hours via the N3 through Pietermaritzburg</div>
+            </div>
+          </div>
+        </div>
+        <a href="#enquire" class="btn-terra">Book Your Stay</a>
+      </div>
+      <div class="map-wrap">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115794!2d29.2167!3d-28.9833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ef5c91b39b3d0ed%3A0x2a1a3b5d6e7f8c9a!2sDrakensberg%2C%20KwaZulu-Natal!5e0!3m2!1sen!2sza!4v1234567890"
+          allowfullscreen loading="lazy" title="Amber House Guest Lodge location">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="fl">
+        Amber House Guest Lodge
+        <span>Drakensberg, KwaZulu-Natal</span>
+      </div>
+      <p>A family-friendly retreat in the heart of the Drakensberg. Where mountains meet warm hospitality.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="#about">About Us</a>
+      <a href="#rooms">Rooms</a>
+      <a href="#amenities">Amenities</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#enquire">Enquire</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>073 000 0000</p>
+      <p>stay@amberhouseLodge.co.za</p>
+      <p>Champagne Valley Road,<br>Drakensberg, KZN</p>
+    </div>
+    <div class="footer-col">
+      <h4>Policies</h4>
+      <p>Check-in: 14:00</p>
+      <p>Check-out: 10:00</p>
+      <p>No smoking indoors</p>
+      <p>Pets on request</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Amber House Guest Lodge · Drakensberg, KZN</span>
+    <div class="footer-socials">
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
+      <a href="#">WhatsApp</a>
+    </div>
+  </div>
+</footer>
+
+<!-- DISCLAIMER -->
+<div class="disclaimer">
+  <div class="disclaimer-inner">
+    <span class="disclaimer-icon">⚠️</span>
+    <p>
+      <strong>This is a concept website created by Seventh Studio</strong> to demonstrate the Showcase Package.
+      Amber House Guest Lodge is a fictional business created for demonstration purposes only.
+      Any resemblance to a real lodge or business of the same or similar name is purely coincidental and unintentional.
+      All contact details, phone numbers, email addresses, prices, and testimonials shown are fictitious — please do not attempt to contact them.
+      <a href="https://seventhstudio.co.za" target="_blank">Visit Seventh Studio</a> to enquire about a website for your business.
+    </p>
+  </div>
+</div>
+
+<script>
+  // Testimonials slideshow
+  const tnTrack = document.getElementById('tnTrack');
+  const tdots = document.querySelectorAll('.tdot');
+  let tnCurrent = 0;
+  const tnTotal = 2;
+  let tnTimer;
+
+  function tnGoTo(idx) {
+    tnCurrent = (idx + tnTotal) % tnTotal;
+    tnTrack.style.transform = `translateX(-${tnCurrent * 100}%)`;
+    tdots.forEach((d, i) => d.classList.toggle('active', i === tnCurrent));
+  }
+
+  document.getElementById('tnNext').addEventListener('click', () => { tnGoTo(tnCurrent + 1); tnReset(); });
+  document.getElementById('tnPrev').addEventListener('click', () => { tnGoTo(tnCurrent - 1); tnReset(); });
+  tdots.forEach(d => d.addEventListener('click', () => { tnGoTo(+d.dataset.i); tnReset(); }));
+
+  function tnReset() { clearInterval(tnTimer); tnTimer = setInterval(() => tnGoTo(tnCurrent + 1), 5500); }
+  tnTimer = setInterval(() => tnGoTo(tnCurrent + 1), 5500);
+</script>
+
+</body>
+</html>

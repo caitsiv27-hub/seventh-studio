@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Velvet Beauty — Premium Hair Salon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --crimson:  #8B0020;
+      --crimson-dk: #5c0015;
+      --crimson-lt: #f9edf0;
+      --black:    #0e0809;
+      --off-black: #1a0d0f;
+      --white:    #faf8f8;
+      --grey:     #f3efef;
+      --mid:      #8a7070;
+      --border:   #e8dede;
+      --serif:    'Playfair Display', Georgia, serif;
+      --sans:     'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--white);
+      color: var(--black);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── DEMO BANNER ── */
+    .demo-banner {
+      background: var(--black);
+      color: rgba(255,255,255,0.65);
+      text-align: center;
+      padding: 0.55rem 1rem;
+      font-size: 0.75rem;
+      font-family: var(--sans);
+    }
+    .demo-banner a { color: var(--crimson); text-decoration: none; font-weight: 500; margin-left: 0.3rem; }
+    .demo-banner a:hover { text-decoration: underline; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(14,8,9,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(139,0,32,0.25);
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 2.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      height: 68px;
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.4rem; font-weight: 900;
+      letter-spacing: 0.08em;
+      color: var(--white); text-decoration: none;
+    }
+    .nav-logo em { font-style: italic; color: var(--crimson); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.8rem; font-weight: 400; letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-book {
+      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--white);
+      background: var(--crimson); padding: 0.5rem 1.4rem;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .nav-book:hover { background: var(--crimson-dk); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; min-height: 96vh;
+      display: flex; align-items: flex-end;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1620331311520-246422fd82f9?w=1800&auto=format&fit=crop&q=85');
+      background-size: cover; background-position: center 30%;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(10,4,5,0.97) 0%,
+        rgba(10,4,5,0.72) 38%,
+        rgba(80,0,18,0.25) 70%,
+        rgba(10,4,5,0.15) 100%
+      );
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: 1100px; margin: 0 auto;
+      padding: 0 2.5rem 5rem; width: 100%;
+    }
+    .hero-tag {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 0.65rem; font-weight: 500;
+      letter-spacing: 0.26em; text-transform: uppercase;
+      color: var(--crimson); border: 1px solid rgba(139,0,32,0.5);
+      padding: 0.3rem 0.9rem; margin-bottom: 1.5rem;
+    }
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(4rem, 10vw, 8.5rem);
+      font-weight: 900; line-height: 0.92;
+      letter-spacing: -0.02em; color: var(--white);
+      margin-bottom: 1.8rem;
+    }
+    .hero-title em { font-style: italic; color: var(--crimson); }
+    .hero-bottom {
+      display: flex; justify-content: space-between;
+      align-items: flex-end; gap: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .hero-sub {
+      font-size: 1rem; font-weight: 300;
+      color: rgba(255,255,255,0.55); line-height: 1.8;
+      max-width: 400px;
+    }
+    .hero-sub strong { color: rgba(255,255,255,0.85); font-weight: 400; }
+    .hero-actions { display: flex; gap: 1rem; align-items: center; flex-shrink: 0; }
+    .btn-crimson {
+      font-family: var(--sans);
+      font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--white);
+      background: var(--crimson); padding: 0.85rem 2rem;
+      text-decoration: none; transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .btn-crimson:hover { background: var(--crimson-dk); transform: translateY(-1px); }
+    .btn-outline {
+      font-family: var(--sans);
+      font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; color: rgba(255,255,255,0.65);
+      border: 1px solid rgba(255,255,255,0.25); padding: 0.85rem 2rem;
+      text-decoration: none; transition: border-color 0.2s, color 0.2s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--white); color: var(--white); }
+
+    /* ── STRIP ── */
+    .strip {
+      background: var(--crimson);
+      padding: 0.85rem 0; overflow: hidden; white-space: nowrap;
+    }
+    .strip-track {
+      display: inline-flex; animation: roll 22s linear infinite;
+    }
+    .strip-track span {
+      font-family: var(--serif); font-style: italic; font-weight: 700;
+      font-size: 1rem; color: rgba(255,255,255,0.75);
+      padding: 0 2rem; letter-spacing: 0.04em;
+    }
+    .strip-track span.dot {
+      font-style: normal; font-family: var(--sans);
+      font-size: 0.5rem; color: rgba(255,255,255,0.4);
+      letter-spacing: 0; padding: 0 0.5rem;
+    }
+    @keyframes roll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ── SHARED ── */
+    .sec { padding: 6rem 0; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 2.5rem; }
+    .sec-tag {
+      font-size: 0.65rem; font-weight: 500; letter-spacing: 0.24em;
+      text-transform: uppercase; color: var(--crimson);
+      margin-bottom: 0.7rem; display: flex; align-items: center; gap: 0.6rem;
+    }
+    .sec-tag::before { content: ''; width: 18px; height: 1px; background: var(--crimson); display: block; }
+    .sec-title {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 900; line-height: 1.0;
+      letter-spacing: -0.02em; color: var(--black);
+      margin-bottom: 0.8rem;
+    }
+    .sec-title em { font-style: italic; color: var(--crimson); }
+    .sec-sub {
+      font-size: 0.95rem; font-weight: 300;
+      color: var(--mid); line-height: 1.8; max-width: 500px;
+    }
+
+    /* ── ABOUT ── */
+    #about { border-bottom: 1px solid var(--border); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 6rem; align-items: center;
+    }
+    .about-img {
+      position: relative; aspect-ratio: 3/4; overflow: hidden;
+    }
+    .about-img img { width: 100%; height: 100%; object-fit: cover; }
+    .about-img-accent {
+      position: absolute; bottom: -1.5rem; right: -1.5rem;
+      width: 120px; height: 120px;
+      background: var(--crimson); z-index: -1;
+    }
+    .about-body { padding: 1rem 0; }
+    .about-body .sec-sub { max-width: 100%; margin-bottom: 1.2rem; }
+    .about-stats {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--border); margin-top: 2.5rem;
+    }
+    .astat { background: var(--white); padding: 1.2rem 1rem; text-align: center; }
+    .astat .n {
+      font-family: var(--serif); font-size: 2.4rem; font-weight: 900;
+      color: var(--crimson); line-height: 1;
+    }
+    .astat .l {
+      font-size: 0.65rem; font-weight: 400; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--mid); margin-top: 0.2rem;
+    }
+
+    /* ── SERVICES ── */
+    #services { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    #services .sec-tag { color: var(--crimson); }
+    #services .sec-tag::before { background: var(--crimson); }
+    #services .sec-title { color: var(--black); }
+    #services .sec-sub { color: var(--mid); }
+
+    .services-head {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: end; margin-bottom: 4rem;
+    }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    .svc-card {
+      background: var(--white); border: 1px solid var(--border);
+      padding: 2.2rem 2rem;
+      transition: box-shadow 0.25s, border-color 0.25s, transform 0.25s;
+      position: relative; overflow: hidden;
+    }
+    .svc-card:hover {
+      box-shadow: 0 12px 40px rgba(139,0,32,0.1);
+      border-color: rgba(139,0,32,0.3);
+      transform: translateY(-3px);
+    }
+    .svc-card-top {
+      display: flex; align-items: center; gap: 1rem; margin-bottom: 0.8rem;
+    }
+    .svc-icon {
+      width: 48px; height: 48px; background: var(--crimson);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; flex-shrink: 0;
+    }
+    .svc-name {
+      font-family: var(--serif); font-size: 1.6rem; font-weight: 900;
+      color: var(--black); line-height: 1.1;
+    }
+    .svc-desc {
+      font-size: 0.83rem; font-weight: 300;
+      color: var(--mid); line-height: 1.75;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .svc-items { display: flex; flex-direction: column; gap: 0; }
+    .svc-item {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0.6rem 0; border-bottom: 1px solid var(--border);
+      font-size: 0.85rem;
+    }
+    .svc-item:last-child { border-bottom: none; }
+    .svc-item span { color: var(--black); font-weight: 400; }
+    .svc-item .price {
+      color: var(--crimson); font-weight: 600; font-size: 0.82rem;
+      background: var(--crimson-lt); padding: 0.15rem 0.5rem;
+    }
+
+    /* ── WHY ── */
+    #why { border-bottom: 1px solid var(--border); }
+    .why-layout {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 6rem; align-items: center;
+    }
+    .why-cards { display: flex; flex-direction: column; gap: 1.2rem; margin-top: 2rem; }
+    .why-card {
+      display: flex; gap: 1.4rem;
+      padding: 1.4rem; border: 1px solid var(--border);
+      background: var(--white); transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .why-card:hover { box-shadow: 0 4px 20px rgba(139,0,32,0.08); border-color: rgba(139,0,32,0.25); }
+    .why-icon {
+      font-size: 1.3rem; flex-shrink: 0;
+      width: 46px; height: 46px;
+      background: var(--crimson-lt);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .why-card h4 {
+      font-family: var(--serif); font-size: 1.1rem;
+      font-weight: 700; color: var(--black); margin-bottom: 0.3rem;
+    }
+    .why-card p { font-size: 0.85rem; font-weight: 300; color: var(--mid); line-height: 1.7; }
+    .why-img {
+      position: relative; aspect-ratio: 4/5; overflow: hidden;
+    }
+    .why-img img { width: 100%; height: 100%; object-fit: cover; }
+    .why-img-label {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: var(--crimson); padding: 1rem 1.5rem;
+      font-family: var(--serif); font-style: italic; font-weight: 700;
+      font-size: 1.1rem; color: white; letter-spacing: 0.03em;
+    }
+
+    /* ── TESTIMONIALS SLIDESHOW ── */
+    #testimonials {
+      background: var(--black);
+      border-top: 1px solid #2a1215;
+      border-bottom: 1px solid #2a1215;
+      overflow: hidden;
+    }
+    #testimonials .sec-tag { color: var(--crimson); }
+    #testimonials .sec-tag::before { background: var(--crimson); }
+    #testimonials .sec-title { color: var(--white); }
+
+    .testi-head {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 3.5rem;
+    }
+    .testi-controls { display: flex; gap: 0.5rem; }
+    .testi-btn {
+      width: 44px; height: 44px; border: 1px solid rgba(255,255,255,0.15);
+      background: transparent; color: white; cursor: pointer;
+      font-size: 1rem; display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .testi-btn:hover { background: var(--crimson); border-color: var(--crimson); }
+
+    .testi-slider { position: relative; overflow: hidden; }
+    .testi-track {
+      display: flex;
+      transition: transform 0.55s cubic-bezier(0.4,0,0.2,1);
+    }
+    .testi-slide {
+      min-width: 100%; padding: 0 0.5rem;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    }
+    .testi-card {
+      background: #160b0d; border: 1px solid rgba(255,255,255,0.06);
+      padding: 2.2rem 2rem; position: relative;
+      transition: border-color 0.2s;
+    }
+    .testi-card:hover { border-color: rgba(139,0,32,0.4); }
+    .testi-card::before {
+      content: '"\2019'; 
+      font-family: var(--serif); font-size: 5rem; font-weight: 900;
+      line-height: 0.8; color: var(--crimson); opacity: 0.2;
+      display: block; margin-bottom: 0.8rem;
+    }
+    .testi-text {
+      font-family: var(--serif); font-style: italic; font-weight: 700;
+      font-size: 1rem; line-height: 1.8;
+      color: rgba(255,255,255,0.82); margin-bottom: 1.8rem;
+    }
+    .testi-rule { height: 1px; background: rgba(255,255,255,0.07); margin-bottom: 1.2rem; }
+    .testi-author { display: flex; align-items: center; gap: 0.8rem; }
+    .testi-av {
+      width: 38px; height: 38px;
+      background: var(--crimson); color: white;
+      font-size: 0.75rem; font-weight: 500;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .testi-name { font-size: 0.85rem; font-weight: 500; color: var(--white); }
+    .testi-loc { font-size: 0.72rem; color: rgba(255,255,255,0.38); }
+    .testi-stars { color: var(--crimson); font-size: 0.72rem; margin-top: 0.1rem; }
+
+    .testi-dots {
+      display: flex; gap: 0.5rem; justify-content: center; margin-top: 2.5rem;
+    }
+    .testi-dot {
+      width: 28px; height: 3px; background: rgba(255,255,255,0.15);
+      cursor: pointer; transition: background 0.2s, width 0.2s;
+      border: none;
+    }
+    .testi-dot.active { background: var(--crimson); width: 44px; }
+
+    /* ── BOOK ── */
+    #book { background: var(--off-black); border-bottom: 1px solid #2a1215; }
+    #book .sec-tag { color: var(--crimson); }
+    #book .sec-tag::before { background: var(--crimson); }
+    #book .sec-title { color: var(--white); }
+    #book .sec-sub { color: rgba(255,255,255,0.38); }
+
+    .book-layout {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: start;
+    }
+    .book-form { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group label {
+      font-size: 0.65rem; font-weight: 500;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--white); font-family: var(--sans);
+      font-size: 0.88rem; font-weight: 300;
+      padding: 0.75rem 1rem; outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(255,255,255,0.18); }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--crimson); }
+    .form-group select option { background: #140a0b; color: white; }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-submit {
+      cursor: pointer; border: none;
+      font-family: var(--sans); font-size: 0.78rem;
+      font-weight: 500; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--white);
+      background: var(--crimson); padding: 0.9rem 2rem;
+      transition: background 0.2s; align-self: flex-start;
+    }
+    .form-submit:hover { background: var(--crimson-dk); }
+    .form-note {
+      font-size: 0.72rem; color: rgba(255,255,255,0.25);
+      line-height: 1.6;
+    }
+    .book-info { padding-top: 1rem; }
+    .book-details { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+    .book-detail {
+      display: flex; gap: 1.2rem; align-items: flex-start;
+      padding: 1rem 1.2rem;
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+    .bd-icon { font-size: 1.1rem; flex-shrink: 0; }
+    .bd-label {
+      font-size: 0.6rem; font-weight: 500; letter-spacing: 0.16em;
+      text-transform: uppercase; color: rgba(255,255,255,0.28); margin-bottom: 0.2rem;
+    }
+    .bd-val { font-size: 0.88rem; color: rgba(255,255,255,0.62); font-weight: 300; }
+
+    /* ── CONTACT (no map — Establish only) ── */
+    #contact { border-bottom: 1px solid var(--border); }
+    .contact-inner {
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      gap: 3rem;
+    }
+    .contact-block h4 {
+      font-family: var(--serif); font-size: 1.1rem; font-weight: 700;
+      color: var(--black); margin-bottom: 1rem; padding-bottom: 0.6rem;
+      border-bottom: 2px solid var(--crimson);
+      display: inline-block;
+    }
+    .contact-block p, .contact-block a {
+      font-size: 0.88rem; font-weight: 300; color: var(--mid);
+      line-height: 1.8; text-decoration: none; display: block;
+    }
+    .contact-block a:hover { color: var(--crimson); }
+    .hours-list { display: flex; flex-direction: column; gap: 0.3rem; }
+    .hours-row {
+      display: flex; justify-content: space-between;
+      font-size: 0.83rem; font-weight: 300;
+      padding: 0.35rem 0; border-bottom: 1px solid var(--border);
+    }
+    .hours-row .day { color: var(--mid); }
+    .hours-row .closed { color: var(--crimson); font-size: 0.78rem; }
+    .socials { display: flex; gap: 0.6rem; margin-top: 1rem; flex-wrap: wrap; }
+    .social-btn {
+      font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 0.45rem 0.9rem;
+      border: 1px solid var(--border); color: var(--mid);
+      text-decoration: none; transition: all 0.2s;
+    }
+    .social-btn:hover { border-color: var(--crimson); color: var(--crimson); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black); padding: 1.8rem 0;
+      border-top: 1px solid #1e0a0d;
+    }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 2.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-logo {
+      font-family: var(--serif); font-size: 1.1rem; font-weight: 900;
+      letter-spacing: 0.08em; color: rgba(255,255,255,0.3);
+    }
+    .footer-logo em { font-style: italic; color: rgba(139,0,32,0.5); }
+    .footer-copy { font-size: 0.7rem; color: rgba(255,255,255,0.18); }
+    .footer-links { display: flex; gap: 1.8rem; }
+    .footer-links a { font-size: 0.75rem; color: rgba(255,255,255,0.28); text-decoration: none; }
+    .footer-links a:hover { color: rgba(255,255,255,0.55); }
+
+    /* ── DISCLAIMER ── */
+    .disclaimer {
+      background: #080304;
+      border-top: 3px solid var(--crimson);
+      padding: 1.2rem 0;
+    }
+    .disclaimer-inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 2.5rem;
+      display: flex; align-items: flex-start; gap: 0.8rem;
+    }
+    .disclaimer-icon { font-size: 1rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .disclaimer p {
+      font-size: 0.75rem; font-weight: 300;
+      color: rgba(255,255,255,0.38); line-height: 1.7;
+    }
+    .disclaimer p strong { color: rgba(255,255,255,0.75); font-weight: 500; }
+    .disclaimer p a { color: var(--crimson); text-decoration: none; font-weight: 500; margin-left: 0.3rem; }
+    .disclaimer p a:hover { text-decoration: underline; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .about-grid, .why-layout, .services-head,
+      .book-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+      .services-grid, .testi-grid, .contact-inner { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .hero-bottom { flex-direction: column; align-items: flex-start; }
+      .footer-inner { flex-direction: column; gap: 0.6rem; text-align: center; }
+      .footer-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- DEMO BANNER -->
+<div class="demo-banner">
+  This is a concept site created by Seventh Studio to showcase the Establish Package.
+  <a href="https://seventhstudio.co.za" target="_blank">View our packages →</a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo"><em>Velvet</em> Beauty</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#book">Book</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#book" class="nav-book">Book Now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Premium Hair Studio · Johannesburg</div>
+    <h1 class="hero-title">
+      Where Hair<br>
+      Becomes <em>Art.</em>
+    </h1>
+    <div class="hero-bottom">
+      <p class="hero-sub">
+        Precision cuts, transformative colour, and treatments built for
+        <strong>your hair, your story.</strong>
+        Velvet Beauty is where luxury meets craft.
+      </p>
+      <div class="hero-actions">
+        <a href="#book" class="btn-crimson">Book a Session</a>
+        <a href="#services" class="btn-outline">View Services</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-track">
+    <span>Precision Cuts</span><span class="dot">◆</span>
+    <span>Colour Transformations</span><span class="dot">◆</span>
+    <span>Keratin Treatments</span><span class="dot">◆</span>
+    <span>Bridal Styling</span><span class="dot">◆</span>
+    <span>Balayage &amp; Highlights</span><span class="dot">◆</span>
+    <span>Hair Treatments</span><span class="dot">◆</span>
+    <span>Precision Cuts</span><span class="dot">◆</span>
+    <span>Colour Transformations</span><span class="dot">◆</span>
+    <span>Keratin Treatments</span><span class="dot">◆</span>
+    <span>Bridal Styling</span><span class="dot">◆</span>
+    <span>Balayage &amp; Highlights</span><span class="dot">◆</span>
+    <span>Hair Treatments</span><span class="dot">◆</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="sec" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-img">
+        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&auto=format&fit=crop&q=80" alt="Velvet Beauty Salon"/>
+        <div class="about-img-accent"></div>
+      </div>
+      <div class="about-body">
+        <p class="sec-tag">Our Story</p>
+        <h2 class="sec-title">More Than a<br><em>Haircut.</em></h2>
+        <p class="sec-sub">Velvet Beauty was born from a belief that every client deserves to leave feeling like the best version of themselves. Founded in Johannesburg, we've spent over a decade perfecting the art of hair — blending international technique with an intimate, personal touch.</p>
+        <p class="sec-sub" style="margin-top:1rem;">Whether you're here for a subtle trim or a complete transformation, our stylists bring the same level of care, precision, and passion to every chair.</p>
+        <div class="about-stats">
+          <div class="astat"><div class="n">12+</div><div class="l">Years in business</div></div>
+          <div class="astat"><div class="n">3k+</div><div class="l">Clients served</div></div>
+          <div class="astat"><div class="n">4.9★</div><div class="l">Average rating</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="sec" id="services">
+  <div class="wrap">
+    <div class="services-head">
+      <div>
+        <p class="sec-tag">What We Do</p>
+        <h2 class="sec-title">Services Built<br>for <em>Every</em> Hair.</h2>
+      </div>
+      <p class="sec-sub">From everyday maintenance to headline-worthy transformations — all priced transparently, no surprises.</p>
+    </div>
+    <div class="services-grid">
+      <div class="svc-card">
+        <div class="svc-card-top">
+          <div class="svc-icon">✂️</div>
+          <div class="svc-name">Cuts & Styling</div>
+        </div>
+        <p class="svc-desc">Shape, texture, and movement — crafted for your face, lifestyle, and hair type.</p>
+        <div class="svc-items">
+          <div class="svc-item"><span>Ladies Cut &amp; Blow-dry</span><span class="price">From R350</span></div>
+          <div class="svc-item"><span>Gents Cut</span><span class="price">From R180</span></div>
+          <div class="svc-item"><span>Blow-dry &amp; Style</span><span class="price">From R220</span></div>
+          <div class="svc-item"><span>Bridal Up-do</span><span class="price">From R650</span></div>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-card-top">
+          <div class="svc-icon">🎨</div>
+          <div class="svc-name">Colour</div>
+        </div>
+        <p class="svc-desc">From soft balayage to bold full transformations — precision colour that lasts.</p>
+        <div class="svc-items">
+          <div class="svc-item"><span>Full Colour</span><span class="price">From R550</span></div>
+          <div class="svc-item"><span>Balayage / Ombré</span><span class="price">From R900</span></div>
+          <div class="svc-item"><span>Highlights</span><span class="price">From R750</span></div>
+          <div class="svc-item"><span>Toner &amp; Gloss</span><span class="price">From R280</span></div>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-card-top">
+          <div class="svc-icon">✨</div>
+          <div class="svc-name">Treatments</div>
+        </div>
+        <p class="svc-desc">Restore, strengthen, and protect. Because healthy hair is beautiful hair.</p>
+        <div class="svc-items">
+          <div class="svc-item"><span>Keratin Smoothing</span><span class="price">From R1,200</span></div>
+          <div class="svc-item"><span>Olaplex Treatment</span><span class="price">From R450</span></div>
+          <div class="svc-item"><span>Deep Conditioning</span><span class="price">From R280</span></div>
+          <div class="svc-item"><span>Scalp Treatment</span><span class="price">From R320</span></div>
+        </div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-card-top">
+          <div class="svc-icon">💫</div>
+          <div class="svc-name">Extensions</div>
+        </div>
+        <p class="svc-desc">Add length, volume, or both — for a seamless, natural finish every time.</p>
+        <div class="svc-items">
+          <div class="svc-item"><span>Tape-in Extensions</span><span class="price">From R2,200</span></div>
+          <div class="svc-item"><span>Weave Install</span><span class="price">From R800</span></div>
+          <div class="svc-item"><span>Clip-in Styling</span><span class="price">From R350</span></div>
+          <div class="svc-item"><span>Consultation</span><span class="price">Complimentary</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="sec" id="why">
+  <div class="wrap">
+    <div class="why-layout">
+      <div>
+        <p class="sec-tag">Why Velvet</p>
+        <h2 class="sec-title">The <em>Difference</em><br>You'll Feel.</h2>
+        <div class="why-cards">
+          <div class="why-card">
+            <div class="why-icon">✂️</div>
+            <div>
+              <h4>Senior Stylists Only</h4>
+              <p>Every stylist at Velvet Beauty has a minimum of 5 years experience. Your hair is never a training exercise.</p>
+            </div>
+          </div>
+          <div class="why-card">
+            <div class="why-icon">🌿</div>
+            <div>
+              <h4>Premium Products</h4>
+              <p>We use only professional-grade colour and treatments — Wella, Olaplex, Kérastase — because your hair deserves the best.</p>
+            </div>
+          </div>
+          <div class="why-card">
+            <div class="why-icon">💬</div>
+            <div>
+              <h4>Personalised Consultation</h4>
+              <p>Every visit starts with a thorough consultation. We listen first, then we create. No guesswork, no surprises.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="why-img">
+        <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=800&auto=format&fit=crop&q=80" alt="Velvet Beauty stylist"/>
+        <div class="why-img-label">Where every detail matters.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS SLIDESHOW -->
+<section class="sec" id="testimonials">
+  <div class="wrap">
+    <div class="testi-head">
+      <div>
+        <p class="sec-tag">Client Love</p>
+        <h2 class="sec-title">What They're<br><em>Saying.</em></h2>
+      </div>
+      <div class="testi-controls">
+        <button class="testi-btn" id="tPrev">&#8592;</button>
+        <button class="testi-btn" id="tNext">&#8594;</button>
+      </div>
+    </div>
+    <div class="testi-slider">
+      <div class="testi-track" id="tTrack">
+
+        <!-- Slide 1: 3 reviews -->
+        <div class="testi-slide">
+          <div class="testi-card">
+            <p class="testi-text">I've been to salons all over Joburg and nothing compares to Velvet. The balayage is exactly what I had on my Pinterest board — honestly better. I won't go anywhere else.</p>
+            <div class="testi-rule"></div>
+            <div class="testi-author">
+              <div class="testi-av">SK</div>
+              <div>
+                <div class="testi-name">Simone K.</div>
+                <div class="testi-loc">Sandton, Johannesburg</div>
+                <div class="testi-stars">★★★★★</div>
+              </div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <p class="testi-text">Did my hair for my wedding and I was in tears — happy tears. They listened to everything I wanted and delivered something even more beautiful than I imagined.</p>
+            <div class="testi-rule"></div>
+            <div class="testi-author">
+              <div class="testi-av">AN</div>
+              <div>
+                <div class="testi-name">Ayanda N.</div>
+                <div class="testi-loc">Fourways, Johannesburg</div>
+                <div class="testi-stars">★★★★★</div>
+              </div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <p class="testi-text">The keratin treatment completely transformed my hair. Three months later and it's still smoother than it's ever been. The team was professional, warm, and just amazing.</p>
+            <div class="testi-rule"></div>
+            <div class="testi-author">
+              <div class="testi-av">TM</div>
+              <div>
+                <div class="testi-name">Thandi M.</div>
+                <div class="testi-loc">Midrand, Johannesburg</div>
+                <div class="testi-stars">★★★★★</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2: 3 more reviews -->
+        <div class="testi-slide">
+          <div class="testi-card">
+            <p class="testi-text">Walked in with damaged, over-processed hair and walked out feeling like a completely different person. They actually turned down a service because they said my hair needed a break first. That's integrity.</p>
+            <div class="testi-rule"></div>
+            <div class="testi-author">
+              <div class="testi-av">NP</div>
+              <div>
+                <div class="testi-name">Nomvula P.</div>
+                <div class="testi-loc">Roodepoort, Johannesburg</div>
+                <div class="testi-stars">★★★★★</div>
+              </div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <p class="testi-text">My colour has never looked this good. I've spent years going to different stylists and no one has gotten it right until now. The whole experience felt like a treat, not just an appointment.</p>
+            <div class="testi-rule"></div>
+            <div class="testi-author">
+              <div class="testi-av">LP</div>
+              <div>
+                <div class="testi-name">Lerato P.</div>
+                <div class="testi-loc">Bryanston, Johannesburg</div>
+                <div class="testi-stars">★★★★★</div>
+              </div>
+            </div>
+          </div>
+          <div class="testi-card">
+            <p class="testi-text">Brought in a reference photo and they nailed it perfectly. Not a close approximation — exactly it. I was genuinely shocked. This is the only salon I'll ever recommend to anyone.</p>
+            <div class="testi-rule"></div>
+            <div class="testi-author">
+              <div class="testi-av">ZD</div>
+              <div>
+                <div class="testi-name">Zanele D.</div>
+                <div class="testi-loc">Parkhurst, Johannesburg</div>
+                <div class="testi-stars">★★★★★</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="testi-dots">
+      <button class="testi-dot active" data-idx="0"></button>
+      <button class="testi-dot" data-idx="1"></button>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK -->
+<section class="sec" id="book">
+  <div class="wrap">
+    <div class="book-layout">
+      <div>
+        <p class="sec-tag">Enquire</p>
+        <h2 class="sec-title">Reserve Your<br><em>Chair.</em></h2>
+        <p class="sec-sub">Fill in the form and we'll confirm your booking within 2 hours during salon hours.</p>
+        <form class="book-form" onsubmit="return false;">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" placeholder="Your name"/>
+            </div>
+            <div class="form-group">
+              <label>Phone / WhatsApp</label>
+              <input type="tel" placeholder="071 000 0000"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="you@email.com"/>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Service</label>
+              <select>
+                <option value="" disabled selected>Select a service</option>
+                <option>Cut &amp; Blow-dry</option>
+                <option>Full Colour</option>
+                <option>Balayage / Ombré</option>
+                <option>Keratin Treatment</option>
+                <option>Extensions</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Preferred Date</label>
+              <input type="date"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Anything we should know?</label>
+            <textarea placeholder="Hair history, allergies, references..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send Enquiry</button>
+          <p class="form-note">We'll respond within 2 hours. You can also WhatsApp us if you prefer a quicker reply.</p>
+        </form>
+      </div>
+      <div class="book-info">
+        <p class="sec-tag">Contact Details</p>
+        <h2 class="sec-title" style="font-size:2rem;">Get in <em>Touch.</em></h2>
+        <div class="book-details">
+          <div class="book-detail">
+            <div class="bd-icon">📍</div>
+            <div>
+              <div class="bd-label">Location</div>
+              <div class="bd-val">12 Rivonia Road, Sandton, Johannesburg</div>
+            </div>
+          </div>
+          <div class="book-detail">
+            <div class="bd-icon">📞</div>
+            <div>
+              <div class="bd-label">Phone &amp; WhatsApp</div>
+              <div class="bd-val">071 000 0000</div>
+            </div>
+          </div>
+          <div class="book-detail">
+            <div class="bd-icon">✉️</div>
+            <div>
+              <div class="bd-label">Email</div>
+              <div class="bd-val">hello@velvetbeauty.co.za</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT & HOURS -->
+<section class="sec" id="contact">
+  <div class="wrap">
+    <p class="sec-tag">Hours &amp; Socials</p>
+    <h2 class="sec-title" style="margin-bottom:2.5rem;">When to <em>Find Us.</em></h2>
+    <div class="contact-inner">
+      <div class="contact-block">
+        <h4>Salon Hours</h4>
+        <div class="hours-list">
+          <div class="hours-row"><span class="day">Monday – Friday</span><span>8:00 – 18:00</span></div>
+          <div class="hours-row"><span class="day">Saturday</span><span>8:00 – 16:00</span></div>
+          <div class="hours-row"><span class="day">Sunday</span><span class="closed">Closed</span></div>
+          <div class="hours-row"><span class="day">Public Holidays</span><span class="closed">Closed</span></div>
+        </div>
+      </div>
+      <div class="contact-block">
+        <h4>Follow Us</h4>
+        <p>Stay up to date with our latest work, transformations, and special offers.</p>
+        <div class="socials">
+          <a href="#" class="social-btn">Instagram</a>
+          <a href="#" class="social-btn">Facebook</a>
+          <a href="#" class="social-btn">TikTok</a>
+        </div>
+      </div>
+      <div class="contact-block">
+        <h4>Policies</h4>
+        <p>Cancellations require 24 hours notice. Late arrivals may result in a shortened appointment. Patch tests required 48 hours before colour services for new clients.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo"><em>Velvet</em> Beauty</div>
+    <span class="footer-copy">© 2026 Velvet Beauty · Sandton, Johannesburg</span>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#book">Book</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<!-- DISCLAIMER -->
+<div class="disclaimer">
+  <div class="disclaimer-inner">
+    <span class="disclaimer-icon">⚠️</span>
+    <p>
+      <strong>This is a concept website created by Seventh Studio</strong> to demonstrate the Establish Package.
+      Velvet Beauty is a fictional business created for demonstration purposes only.
+      Any resemblance to a real salon or business of the same or similar name is purely coincidental and unintentional.
+      All contact details, phone numbers, email addresses, prices, and testimonials shown on this site are fictitious — please do not attempt to contact them.
+      <a href="https://seventhstudio.co.za" target="_blank">Visit Seventh Studio</a> to enquire about a website for your business.
+    </p>
+  </div>
+</div>
+
+<script>
+  const track = document.getElementById('tTrack');
+  const dots = document.querySelectorAll('.testi-dot');
+  let current = 0;
+  const total = 2;
+  let autoTimer;
+
+  function goTo(idx) {
+    current = (idx + total) % total;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  document.getElementById('tNext').addEventListener('click', () => { goTo(current + 1); resetAuto(); });
+  document.getElementById('tPrev').addEventListener('click', () => { goTo(current - 1); resetAuto(); });
+  dots.forEach(d => d.addEventListener('click', () => { goTo(+d.dataset.idx); resetAuto(); }));
+
+  function resetAuto() { clearInterval(autoTimer); autoTimer = setInterval(() => goTo(current + 1), 5000); }
+  autoTimer = setInterval(() => goTo(current + 1), 5000);
+</script>
+</body>
+</html>
